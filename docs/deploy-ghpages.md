@@ -1,6 +1,7 @@
 1. Сборка проекта:
 bash
-ng build --configuration production --base-href "<https://ваше_имя_github.github.io/finance-tracker/>"
+ng build --configuration production --base-href /REPOSITORY_NAME/
+
 Используйте код с осторожностью.
 2. Публикация на GitHub Pages:
 bash
