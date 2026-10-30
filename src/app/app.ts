@@ -44,6 +44,17 @@ export class App implements OnInit {
   // Сигнал количества транзакций, ждущих отправки в оффлайне
   offlineQueueCount = signal<number>(0);
 
+  // Сигналы для подсветки дат:
+  isTodayActive = computed(() => this.transaction().date === this.formatDate(new Date()));
+  isYesterdayActive = computed(() => {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    return this.transaction().date === this.formatDate(d);
+  });
+
+  // Поле для ввода пин-кода на экране блокировки
+  loginPin = signal<string>('');
+
   // ВЫЧИСЛЯЕМЫЙ СИГНАЛ ДЛЯ ВАЛИДАЦИИ (Лайфхак)
   isFormInvalid = computed(() => {
     const current = this.transaction();
@@ -128,19 +139,29 @@ export class App implements OnInit {
   checkAccess() {
     const savedPin = this.appPin();
 
-    // Если настройки еще не заданы, открываем окно конфигурации вместо авторизации
     if (!savedPin || !this.scriptUrl()) {
       this.showSettingsModal.set(true);
       return;
     }
+    // Страница просто покажет форму ввода вместо системного prompt()
+  }
 
-    const pin = prompt('Введите ПИН-код:');
-    if (pin === savedPin) {
+  submitLogin() {
+    if (this.loginPin() === this.appPin()) {
       this.isAuthorized.set(true);
       this.triggerVibration(200);
+      this.loginPin.set(''); // Очищаем поле после успешного входа
     } else {
       this.triggerVibration(600);
       alert('Доступ запрещен');
+    }
+  }
+
+  // 4. Метод на случай, если вы забыли ПИН-код (полный сброс):
+  resetApp() {
+    if (confirm('Вы уверены, что хотите сбросить настройки? Все локальные данные и ПИН-код будут удалены.')) {
+      localStorage.clear();
+      location.reload();
     }
   }
 

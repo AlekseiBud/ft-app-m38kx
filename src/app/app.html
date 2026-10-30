@@ -55,8 +55,8 @@
         <label for="date">Дата</label>
         <input type="text" id="date" placeholder="ДД.ММ.ГГГГ" [value]="transaction().date" (input)="updateField('date', $any($event.target).value)" required>
         <div class="quick-dates">
-          <button type="button" (click)="setQuickDate(0)">Сегодня</button>
-          <button type="button" (click)="setQuickDate(-1)">Вчера</button>
+          <button type="button" [class.active]="isTodayActive()" (click)="setQuickDate(0)">Сегодня</button>
+          <button type="button" [class.active]="isYesterdayActive()" (click)="setQuickDate(-1)">Вчера</button>
         </div>
       </div>
 
@@ -108,7 +108,28 @@
     </div>
   </div>
 } @else {
-  <div class="locked-screen">
-    <p>Доступ ограничен. Перезапустите страницу для ввода ПИН-кода.</p>
+  <div class="modal-overlay">
+    <div class="modal-content" style="text-align: center;">
+      <h3>🔒 Доступ ограничен</h3>
+      <p class="modal-hint">Введите ваш личный ПИН-код для входа в приложение.</p>
+      
+      <div class="form-group">
+        <input 
+          type="password" 
+          inputmode="numeric" 
+          pattern="[0-9]*" 
+          placeholder="Введите ПИН-код" 
+          [value]="loginPin()" 
+          (input)="loginPin.set($any($event.target).value)"
+          (keyup.enter)="submitLogin()">
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-submit" (click)="submitLogin()">Войти</button>
+        <button class="btn-cancel" style="background: #fff0f0; color: #dc3545;" (click)="resetApp()">
+          Забыл ПИН-код (Сброс)
+        </button>
+      </div>
+    </div>
   </div>
 }
