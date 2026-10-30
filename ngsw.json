@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1793393208121,
-  "index": "/ft-app-m38kx/index.html",
+  "timestamp": 1793395814819,
+  "index": "<https://AlekseiBud.github.io/ft-app-m38kx/>/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -21,28 +21,28 @@
         "ignoreVary": true
       },
       "urls": [
-        "/ft-app-m38kx/icons/icon-128x128.png",
-        "/ft-app-m38kx/icons/icon-144x144.png",
-        "/ft-app-m38kx/icons/icon-152x152.png",
-        "/ft-app-m38kx/icons/icon-192x192.png",
-        "/ft-app-m38kx/icons/icon-384x384.png",
-        "/ft-app-m38kx/icons/icon-512x512.png",
-        "/ft-app-m38kx/icons/icon-72x72.png",
-        "/ft-app-m38kx/icons/icon-96x96.png"
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-128x128.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-144x144.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-152x152.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-192x192.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-384x384.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-512x512.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-72x72.png",
+        "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/ft-app-m38kx/icons/icon-128x128.png": "223d7d6adb511a5aea662125e02df809a58106c7",
-    "/ft-app-m38kx/icons/icon-144x144.png": "98ad6937d31fbdd152743baba3507ef59833ea33",
-    "/ft-app-m38kx/icons/icon-152x152.png": "83396507e4c868f03184bb9124127f6d44ef5628",
-    "/ft-app-m38kx/icons/icon-192x192.png": "c5e0a166ff0ad0340debea8006d046a0f23382ad",
-    "/ft-app-m38kx/icons/icon-384x384.png": "9ac2eafefbcc24eec1d9bad7f7c4cec860c31183",
-    "/ft-app-m38kx/icons/icon-512x512.png": "921c19ac24909fe1d48915c0dfadfd56148304c9",
-    "/ft-app-m38kx/icons/icon-72x72.png": "0914e699d3438f1ae7386791534a10a46bb0973c",
-    "/ft-app-m38kx/icons/icon-96x96.png": "7c3b4e6f2068c068f5fb138d1a0cbaae32488f55"
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-128x128.png": "223d7d6adb511a5aea662125e02df809a58106c7",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-144x144.png": "98ad6937d31fbdd152743baba3507ef59833ea33",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-152x152.png": "83396507e4c868f03184bb9124127f6d44ef5628",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-192x192.png": "c5e0a166ff0ad0340debea8006d046a0f23382ad",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-384x384.png": "9ac2eafefbcc24eec1d9bad7f7c4cec860c31183",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-512x512.png": "921c19ac24909fe1d48915c0dfadfd56148304c9",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-72x72.png": "0914e699d3438f1ae7386791534a10a46bb0973c",
+    "<https://AlekseiBud.github.io/ft-app-m38kx/>/icons/icon-96x96.png": "7c3b4e6f2068c068f5fb138d1a0cbaae32488f55"
   },
   "navigationUrls": [
     {
