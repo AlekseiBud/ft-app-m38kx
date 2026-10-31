@@ -22,7 +22,6 @@ export class App implements OnInit {
 
   // Современный инжект вместо конструктора
   private http = inject(HttpClient);
-  // private scriptUrl = 'https://script.google.com/macros/s/AKfycbwx9T0cBtA8G59V9bRZcV48XeW01wB9qXYQkyWmMBI9AHMl33qNZ1kHxc2AO_dyZD2RuQ/exec'; 
 
   // Динамические настройки безопасности через Signals
   scriptUrl = signal<string>('');
@@ -78,10 +77,14 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
-    this.loadSettings();
-    this.checkAccess();
-    this.updateQueueCount();
-    this.setupOnlineListener();
+    try {
+      this.loadSettings();
+      this.checkAccess();
+      this.updateQueueCount();
+      this.setupOnlineListener();
+    } catch (e) {
+      console.error('Ошибка инициализации приложения: ', e);
+    }
   }
 
   private loadSettings() {
@@ -222,6 +225,7 @@ export class App implements OnInit {
       const queue = this.getQueueFromStorage();
       queue.push(payload);
       this.saveQueueToStorage(queue);
+      this.loading.set(false);
       this.triggerVibration([100, 50, 100]);
       alert('Сохранено в оффлайн-очередь 📱');
       this.transaction.set(this.getDefaultTransaction());
@@ -287,5 +291,6 @@ export class App implements OnInit {
         break; // Если один упал, прерываем цикл
       }
     }
+    this.loading.set(false);
   }
 }
