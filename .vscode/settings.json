@@ -1,0 +1,15 @@
+{
+  "mcp.servers": {
+    "angular-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@angular/mcp-server",
+        "run"
+      ],
+      "env": {
+        "ANGULAR_PROJECT_ROOT": "E:\\projects\\finance-tracker"
+      }
+    }
+  }
+}
