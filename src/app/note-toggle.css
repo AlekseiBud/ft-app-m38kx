@@ -1,0 +1,71 @@
+.time-place-toggle {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.toggle-track {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: 14px;
+  background: #ccc;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toggle-checkbox:checked + .toggle-track {
+  background: #007bff;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.toggle-checkbox:checked + .toggle-track .toggle-thumb {
+  transform: translateX(20px);
+}
+
+.toggle-checkbox:focus-visible + .toggle-track {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.toggle-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #557;
+}
+
+.toggle-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 6px;
+}

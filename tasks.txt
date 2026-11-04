@@ -1,4 +1,4 @@
-1. Add a time and place toggle (on by default) for the Note field
+
 2. Add a fingerprint enter in the app
 3. Add reading of an image;
 4. Add voice recording;

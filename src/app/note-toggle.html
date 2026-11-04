@@ -1,0 +1,20 @@
+<div class="time-place-toggle">
+  <label class="toggle" title="Время и место">
+    <input
+      id="time-place-toggle"
+      type="checkbox"
+      class="toggle-checkbox"
+      [checked]="isEnabled()"
+      (change)="onToggle()"
+      [disabled]="isLocating()"
+    >
+    <span class="toggle-track" aria-hidden="true">
+      <span class="toggle-thumb"></span>
+    </span>
+    <span class="toggle-text">🕒📍</span>
+  </label>
+
+  @if (locationError()) {
+    <span class="toggle-error" role="alert">{{ locationError() }}</span>
+  }
+</div>

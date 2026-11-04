@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, signal, effect, inject, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { NoteToggleComponent } from './note-toggle';
 
 interface Transaction {
   amount: string;
@@ -8,12 +9,13 @@ interface Transaction {
   type: 'Расход' | 'Доход';
   date: string;
   note: string;
+  geoLink: string;
 }
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [], // Больше не нужны CommonModule и модули HTTP!
+  imports: [NoteToggleComponent], // Подключаем отдельный компонент для времени и места
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -135,7 +137,8 @@ export class App implements OnInit {
       category: 'Еда',
       type: 'Расход',
       date: this.formatDate(new Date()),
-      note: ''
+      note: '',
+      geoLink: '',
     };
   }
 
@@ -187,6 +190,14 @@ export class App implements OnInit {
 
   updateField(field: keyof Transaction, value: any) {
     this.transaction.update(t => ({ ...t, [field]: value }));
+  }
+
+  onNoteChange(note: string) {
+    this.updateField('note', note);
+  }
+
+  onGeoLinkChange(geoLink: string) {
+    this.updateField('geoLink', geoLink);
   }
 
   setQuickDate(offset: number) {

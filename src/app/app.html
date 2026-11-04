@@ -64,6 +64,12 @@
       <div class="form-group">
         <label for="note">Примечание</label>
         <input type="text" id="note" placeholder="Вкусно поел..." [value]="transaction().note" (input)="updateField('note', $any($event.target).value)">
+        <!-- Переключатель времени и места (вкл. по умолчанию) -->
+        <app-note-toggle
+          [note]="transaction().note"
+          (noteChange)="onNoteChange($event)"
+          (geoLinkChange)="onGeoLinkChange($event)">
+        </app-note-toggle>
       </div>
 
       <!-- Изменяем только блок кнопки в самом низу формы -->
