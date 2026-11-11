@@ -1,15 +1,23 @@
 import { Component, OnInit, ViewChild, ElementRef, signal, effect, inject, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, timeout } from 'rxjs';
 import { NoteToggleComponent } from './note-toggle';
+import packageJson from '../../package.json'; 
 
 interface Transaction {
+  id?: string;
   amount: string;
   category: string;
   type: 'Расход' | 'Доход';
   date: string;
   note: string;
   geoLink: string;
+}
+
+interface ScriptResponse {
+  status: 'success' | 'error' | 'duplicate_ignored';
+  id?: string;
+  message?: string;
 }
 
 @Component({
@@ -21,6 +29,8 @@ interface Transaction {
 })
 export class App implements OnInit {
   @ViewChild('amountInput') amountInput!: ElementRef<HTMLInputElement>;
+
+  readonly appVersion = packageJson.version;
 
   // Современный инжект вместо конструктора
   private http = inject(HttpClient);
@@ -226,6 +236,7 @@ export class App implements OnInit {
 
     const payload = {
       ...current,
+      id: crypto.randomUUID(), // Генерируем уникальный ID один раз
       category: current.type === 'Доход' ? 'Доход' : current.category,
       amount: parseFloat(current.amount)
     };
@@ -250,8 +261,19 @@ export class App implements OnInit {
   private sendToServer(payload: any, isSync = false) {
     if (!isSync) this.loading.set(true);
 
-    this.http.post(this.scriptUrl(), JSON.stringify(payload)).subscribe({
-      next: () => {
+    this.http.post<ScriptResponse>(this.scriptUrl(), JSON.stringify(payload))
+      .pipe(
+        timeout(6000) // Ждем ответ максимум 6 секунд
+      )
+      .subscribe({
+      next: (res) => {
+        // Проверяем, не вернул ли сам скрипт логическую ошибку
+        if (res && res.status === 'error') {
+          this.loading.set(false);
+          alert('Ошибка Google Apps скрипта: ' + res.message);
+          return;
+        }
+
         if (!isSync) {
           this.loading.set(false);
           this.transaction.set(this.getDefaultTransaction());
@@ -291,7 +313,11 @@ export class App implements OnInit {
     for (const item of itemsToSend) {
       try {
         // Превращаем HttpClient в Promise для последовательной отправки (чтобы строки в таблице не перепутались)
-        await firstValueFrom(this.http.post(this.scriptUrl(), JSON.stringify(item)));
+        await firstValueFrom(
+          this.http.post(this.scriptUrl(), JSON.stringify(item)).pipe(
+            timeout(7000) // Даем 7 секунд на фоновую отправку
+          )
+        );
         
         // После успешной отправки удаляем именно этот элемент из локального хранилища
         const currentQueue = this.getQueueFromStorage();

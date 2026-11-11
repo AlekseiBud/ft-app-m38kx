@@ -115,7 +115,7 @@
   </div>
 } @else {
   <div class="modal-overlay">
-    <div class="modal-content" style="text-align: center;">
+    <div class="modal-content">
       <h3>🔒 Доступ ограничен</h3>
       <p class="modal-hint">Введите ваш личный ПИН-код для входа в приложение.</p>
       
@@ -135,6 +135,10 @@
         <button class="btn-cancel" style="background: #fff0f0; color: #dc3545;" (click)="resetApp()">
           Забыл ПИН-код (Сброс)
         </button>
+      </div>
+
+      <div class="app-version">
+        Версия: {{ appVersion }}
       </div>
     </div>
   </div>

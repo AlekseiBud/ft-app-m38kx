@@ -1,59 +1,59 @@
 # FinanceTracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+A personal Progressive Web App (PWA) built with **Angular 22** for quick expense and income tracking, saving data directly to **Google Sheets** via Google Apps Script.
 
-## Development server
+> **Note:** This repository is built and maintained for personal use, though the source code is public. If you would like to use this application for yourself, please fork or clone the repository and deploy your own instance connected to your own Google Sheet.
 
-To start a local development server, run:
+---
+
+## Key Features
+
+* **Offline-First (PWA):** Cached locally on the device via Service Worker so it opens and works without an internet connection.
+* **Offline Queue & Auto-Sync:** If the network is unavailable or times out, transactions are saved in `localStorage` and automatically synced once the connection is restored.
+* **Duplicate Protection:** Every transaction is assigned a unique client-side `UUID` verified by Google Apps Script to prevent duplicate entries during retries.
+* **Local PIN Protection:** Access to the input form is protected by a PIN stored locally in the browser alongside your script endpoint URL.
+* **Fast Entry:** Includes quick date selectors ("Today", "Yesterday"), mobile haptic feedback, and optional notes/geolocation links.
+
+---
+
+## Self-Hosting & Setup
+
+### 1. Prepare Google Sheets & Apps Script
+1. Create a new Google Sheet and add tabs named after the months in Russian (`Январь`, `Февраль`, ..., `Декабрь`), or adjust the month names array in the script to match your locale.
+2. Add the following column headers on each sheet: `Date`, `Type`, `Amount`, `Category`, `Note`, `GeoLink`, `ID` (you can hide the `ID` column).
+3. Go to **Extensions → Apps Script**, paste the `doPost(e)` backend handler, and set your spreadsheet ID.
+4. Click **Deploy → New deployment** (Type: *Web app*, Who has access: *Anyone*), then copy the generated Web App URL.
+
+### 2. Installation & Local Development
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com
+cd ft-app-m38kx
+npm install
+```
+
+Start the local development server:
 
 ```bash
 ng serve
 ```
+Navigate to `http://localhost:4200/` in your browser.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 3. Deploy to GitHub Pages
+Replace `YOUR_REPO_NAME` with your repository name:
 
 ```bash
-ng generate component component-name
+ng build --configuration production --base-href /YOUR_REPO_NAME/
+npx angular-cli-ghpages --dir=dist/finance-tracker/browser
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 4. First Launch
+Open the deployed app, enter your Google Apps Script Web App URL, and set a personal PIN. All settings are stored locally on your device.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Tech Stack
+* **Frontend:** Angular 22 (Standalone Components, Signals), RxJS
+* **PWA:** `@angular/service-worker`
+* **Backend / Storage:** Google Apps Script + Google Sheets
