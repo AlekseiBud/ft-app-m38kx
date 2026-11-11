@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1793822821400,
+  "timestamp": 1794407316917,
   "index": "/ft-app-m38kx/index.html",
   "assetGroups": [
     {
@@ -10,7 +10,13 @@
       "cacheQueryOptions": {
         "ignoreVary": true
       },
-      "urls": [],
+      "urls": [
+        "/ft-app-m38kx/favicon.ico",
+        "/ft-app-m38kx/index.html",
+        "/ft-app-m38kx/main-NEWQADFL.js",
+        "/ft-app-m38kx/manifest.webmanifest",
+        "/ft-app-m38kx/styles-5INURTSO.css"
+      ],
       "patterns": []
     },
     {
@@ -35,6 +41,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/ft-app-m38kx/favicon.ico": "84c52022dbb0f631af3b44761494c01b351385aa",
     "/ft-app-m38kx/icons/icon-128x128.png": "223d7d6adb511a5aea662125e02df809a58106c7",
     "/ft-app-m38kx/icons/icon-144x144.png": "98ad6937d31fbdd152743baba3507ef59833ea33",
     "/ft-app-m38kx/icons/icon-152x152.png": "83396507e4c868f03184bb9124127f6d44ef5628",
@@ -42,7 +49,11 @@
     "/ft-app-m38kx/icons/icon-384x384.png": "9ac2eafefbcc24eec1d9bad7f7c4cec860c31183",
     "/ft-app-m38kx/icons/icon-512x512.png": "921c19ac24909fe1d48915c0dfadfd56148304c9",
     "/ft-app-m38kx/icons/icon-72x72.png": "0914e699d3438f1ae7386791534a10a46bb0973c",
-    "/ft-app-m38kx/icons/icon-96x96.png": "7c3b4e6f2068c068f5fb138d1a0cbaae32488f55"
+    "/ft-app-m38kx/icons/icon-96x96.png": "7c3b4e6f2068c068f5fb138d1a0cbaae32488f55",
+    "/ft-app-m38kx/index.html": "370538f9ef256f53fa44307aac589bb8ec5c3810",
+    "/ft-app-m38kx/main-NEWQADFL.js": "d236cadc77e909c4fa253087b67f576f03cdaf4c",
+    "/ft-app-m38kx/manifest.webmanifest": "624d42a80d47187d3c9ae072d1af99520c4b81c2",
+    "/ft-app-m38kx/styles-5INURTSO.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
   },
   "navigationUrls": [
     {
